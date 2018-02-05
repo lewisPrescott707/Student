@@ -20,9 +20,10 @@ namespace Student.Models
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // StudentName Is Required
             //one-to-many
+            // Standard has many Students
             // Foreign Key = StandardId
-            // Standard Is Required
             modelBuilder.Entity<Student>().Property(s => s.StudentName)
                 .IsRequired();
             modelBuilder.Entity<Standard>()
