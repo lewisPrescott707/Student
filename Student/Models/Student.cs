@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Student.Models
 {
@@ -24,7 +21,7 @@ namespace Student.Models
     /// <summary>
     /// Standard class sealed due to virtual type initialized within constructor
     /// </summary>
-    public sealed class Standard
+    public class Standard
     {
         public Standard()
         {

@@ -23,10 +23,10 @@ namespace Student.Models
             //one-to-many
             // Foreign Key = StandardId
             // Standard Is Required
-            modelBuilder.Entity<Student>().Property(s => s.Standard)
+            modelBuilder.Entity<Student>().Property(s => s.StudentName)
                 .IsRequired();
-            modelBuilder.Entity<Student>()
-                .HasMany(s => s.Standard.Students)
+            modelBuilder.Entity<Standard>()
+                .HasMany(s => s.Students)
                 .WithOne().HasForeignKey(s => s.StandardId);
         }
     }
