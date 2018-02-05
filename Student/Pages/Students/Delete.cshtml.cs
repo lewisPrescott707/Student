@@ -19,7 +19,7 @@ namespace Student.Pages.Students
         }
 
         [BindProperty]
-        public Student Student { get; set; }
+        public Models.Student Student { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,7 +28,7 @@ namespace Student.Pages.Students
                 return NotFound();
             }
 
-            Student = await _context.Student.SingleOrDefaultAsync(m => m.StudentId == id);
+            Student = await _context.Students.SingleOrDefaultAsync(m => m.StudentId == id);
 
             if (Student == null)
             {
@@ -44,11 +44,11 @@ namespace Student.Pages.Students
                 return NotFound();
             }
 
-            Student = await _context.Student.FindAsync(id);
+            Student = await _context.Students.FindAsync(id);
 
             if (Student != null)
             {
-                _context.Student.Remove(Student);
+                _context.Students.Remove(Student);
                 await _context.SaveChangesAsync();
             }
 
