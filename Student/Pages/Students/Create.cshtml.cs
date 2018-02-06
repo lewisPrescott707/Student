@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Student.Models;
 
 namespace Student.Pages.Students
@@ -12,7 +13,7 @@ namespace Student.Pages.Students
     public class CreateModel : PageModel
     {
         private readonly Student.Models.StudentContext _context;
-
+        public List<SelectListItem> StandardName { get; set; }
         public CreateModel(Student.Models.StudentContext context)
         {
             _context = context;
@@ -20,6 +21,19 @@ namespace Student.Pages.Students
 
         public IActionResult OnGet()
         {
+            StandardName = new List<SelectListItem>()
+            {
+                new SelectListItem()
+                {
+                    Text = "A",
+                    Value = "A",
+                },
+                new SelectListItem()
+                {
+                    Text = "B",
+                    Value = "B",
+                },
+            };
             return Page();
         }
 
