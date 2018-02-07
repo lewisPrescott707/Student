@@ -1,14 +1,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Student.Models;
+using Student = Student.Models.Student;
 
 namespace Student.Pages.Students
 {
     public class IndexModel : PageModel
     {
         private readonly StudentContext _context;
+        public List<Models.Student> Students { get; set; }
 
         public IndexModel(StudentContext context)
         {
@@ -19,7 +22,17 @@ namespace Student.Pages.Students
 
         public async Task OnGetAsync()
         {
-            Student = await _context.Students.ToListAsync();
+            Students = new List<Models.Student>()
+            {
+               new Models.Student()
+               {
+                       StandardId = 1,
+                       StudentId = 1,
+                       StudentName = "Aris",
+                       Standard = new Standard()
+               }
+            };
+            Student = Students;
         }
     }
 }
