@@ -8,3 +8,5 @@ Steps to run:
 1. Build project
 2. F5 (Launch App)
 3. Navigate to localhost:xxx/Students
+
+#### Note: Only Create and Index implemented so far with mock data returned
