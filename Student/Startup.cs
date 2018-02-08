@@ -22,6 +22,8 @@ namespace Student
             // Add Model - StudentContext
             services.AddDbContext<StudentContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("StudentContext")));
+            services
+                .AddTransient<IStandards, FakeStandards>();
             services.AddMvc();
         }
 

@@ -1,39 +1,30 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Student.Models;
 
 namespace Student.Pages.Students
 {
     public class CreateModel : PageModel
     {
-        private readonly Student.Models.StudentContext _context;
+        private readonly StudentContext _context;
+        private readonly IStandards _standards;
         public List<SelectListItem> StandardName { get; set; }
-        public CreateModel(Student.Models.StudentContext context)
+        public CreateModel(StudentContext context, IStandards standards)
         {
             _context = context;
+            _standards = standards;
         }
 
+        /// <summary>
+        /// Get List of standards to display in dropdown list
+        /// </summary>
+        /// <returns></returns>
         public IActionResult OnGet()
         {
-            StandardName = new List<SelectListItem>()
-            {
-                new SelectListItem()
-                {
-                    Text = "A",
-                    Value = "A",
-                },
-                new SelectListItem()
-                {
-                    Text = "B",
-                    Value = "B",
-                },
-            };
+            StandardName = _standards.GetAllStandards();
             return Page();
         }
 

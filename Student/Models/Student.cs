@@ -15,7 +15,6 @@ namespace Student.Models
         [Required]
         public string StudentName { get; set; }
         public int StandardId { get; set; }
-        public virtual Standard Standard { get; set; }
     }
 
     /// <summary>
